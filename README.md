@@ -1,3 +1,7 @@
+#Adapted Version of CenterTrack to work on GoogleColab
+Removal all cv.imshow()
+Addition of output txt file with object (cups) bounding box and ids for the purpose of our assignment
+
 # Tracking Objects as Points
 Simultaneous object detection and tracking using center points:
 ![](readme/fig2.png)
