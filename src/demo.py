@@ -24,33 +24,33 @@ def demo(opt):
 	detector = Detector(opt)
 
 	if opt.demo == 'webcam' or \
-	opt.demo[opt.demo.rfind('.') + 1:].lower() in video_ext:
-	is_video = True
-	# demo on video stream
-	cam = cv2.VideoCapture(0 if opt.demo == 'webcam' else opt.demo)
+		opt.demo[opt.demo.rfind('.') + 1:].lower() in video_ext:
+		is_video = True
+		# demo on video stream
+		cam = cv2.VideoCapture(0 if opt.demo == 'webcam' else opt.demo)
 	else:
-	is_video = False
-	# Demo on images sequences
-	if os.path.isdir(opt.demo):
-	  image_names = []
-	  ls = os.listdir(opt.demo)
-	  for file_name in sorted(ls):
-		  ext = file_name[file_name.rfind('.') + 1:].lower()
-		  if ext in image_ext:
-			  image_names.append(os.path.join(opt.demo, file_name))
+		is_video = False
+		# Demo on images sequences
+		if os.path.isdir(opt.demo):
+			image_names = []
+			ls = os.listdir(opt.demo)
+			for file_name in sorted(ls):
+			  ext = file_name[file_name.rfind('.') + 1:].lower()
+			  if ext in image_ext:
+				  image_names.append(os.path.join(opt.demo, file_name))
 	else:
-	  image_names = [opt.demo]
+		image_names = [opt.demo]
 
 	# Initialize output video
 	out = None
 	out_name = opt.demo[opt.demo.rfind('/') + 1:]
 	print('out_name', out_name)
 	if opt.save_video:
-	# fourcc = cv2.VideoWriter_fourcc(*'XVID')
-	fourcc = cv2.VideoWriter_fourcc(*'H264')
-	out = cv2.VideoWriter('../results/{}.mp4'.format(
-	  opt.exp_id + '_' + out_name),fourcc, opt.save_framerate, (
-		opt.video_w, opt.video_h))
+		# fourcc = cv2.VideoWriter_fourcc(*'XVID')
+		fourcc = cv2.VideoWriter_fourcc(*'H264')
+		out = cv2.VideoWriter('../results/{}.mp4'.format(
+		  opt.exp_id + '_' + out_name),fourcc, opt.save_framerate, (
+			opt.video_w, opt.video_h))
 
 	if opt.debug < 5:
 	detector.pause = False
