@@ -95,10 +95,6 @@ def demo(opt):
                 if obj_dict["class"]==42:#cup
                     bbarray = obj_dict['bbox']
                     t_id = obj_dict['tracking_id']
-                    if t_id == 1:#to associate the id from the init.txt file to the ids found here
-                        t_id = 2
-                    elif t_id == 2:
-                        t_id = 1
                     print(f"{cnt} {t_id} {bbarray[0]} {bbarray[2]} {bbarray[1]} {bbarray[3]}", file=text_file)
             # save debug image to video
             if opt.save_video:
